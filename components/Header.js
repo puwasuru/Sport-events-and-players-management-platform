@@ -22,7 +22,7 @@ const Header = () => (
            body {
                font-size: 12px;
                font-family: Arial, sans-serif;
-               color: #fff;
+               color: #000;
                background: #171717;
                height: 100%;
                text-align: left;

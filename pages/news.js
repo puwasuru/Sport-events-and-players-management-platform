@@ -82,7 +82,7 @@ export default () => (
             }
             header h1 a{
                 font-family: LeagueGothic, Verdana, Arial, sans-serif;
-                color: white;
+                color: black;
                 text-decoration: none;
                 text-transform: uppercase;
                 font-weight: normal;
@@ -92,7 +92,7 @@ export default () => (
                 left: 35px;
             }
             #version{
-                color: white;
+                color: black;
                 font-size: 10px;
                 position: relative;
                 top: 12px;
@@ -104,7 +104,7 @@ export default () => (
                 left: 12.5%;
             }
             nav li a{
-                color: white;
+                color: black;
                 text-decoration: none;
                 font-family: Verdana, Arial, sans-serif;
                 font-size: 13px;
