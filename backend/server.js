@@ -12,8 +12,8 @@ server.use(bodyParser.json());
 
 const MONGODB_URI = process.env.DB_URL || 'mongodb://localhost:27017/perasports'
 
-const eventRoute = require('./routes/events')
-server.use('/api', eventRoute)
+const routes = require('./routes/')
+server.use('/api', routes)
 
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });

@@ -1,6 +1,6 @@
 {
     "verbose": true,
-    "ignore": ["node_modules",".next"],
+    "ignore": ["node_modules",".next","backend/test/*"],
     "watch": ["backend/**/*","index.js"],
     "ext": "js json" 
 }

@@ -1,56 +1,23 @@
 import Layout from '../components/Layout.js';
+import fetch from 'isomorphic-unfetch'
 
-export default () => (
+const Index = (props) => (
     <Layout>
-		{/* <div id="adbanner">
-			<div id="ad">
-				<a href="#"><p>Advertise Here</p></a>
-			</div>
-		</div> */}
-		<div id="secwrapper">
-			<section>
-				<article id="featured">
-					<a href="#"><img src="../static/colorsAwards2016_2017.jpg" alt=""/></a>
-					<img src="../static/featured.png" alt="" id="featuredico"/>
-					<h1>Colours' Awards Ceremony 2016 & 2017</h1>
-					<p>Annual Colours' Award Ceremony, a major felicitation ceremony to honor the undergraduate sportsmen & sportswomen of the University of Peradeniya who excelled in the sports field, was held in a grand scale on 26th of November, 2018 at University of Peradeniya.</p>
-					<a href="#" className="readmore">Read more</a>
-				</article>
-				<article>
-                    <a href="#"><img src="../static/interFacultyBaseball.jpg" alt=""/></a>
-					<h1>Inter Faculty Baseball Tournament 2018</h1>
-					<p>Inter Faculty Baseball tournament organized by the Pera Baseball team was held on 21.11.2018 at University ground. Faculty of Engineering crowned the champions after defeating Faculty of Arts in a thrilling final match. Faculty of Management and Faculty of Allied Health Sciences won the 3rd and 4th places respectively.</p>
-					<a href="#" className="readmore">Read more</a>
-				</article>
-				<article className="rightcl">
-					<a href="#"><img src="../static/openingOfVolleyBallNightCourt.jpg" alt=""/></a>
-					<h1>Opening of Volleyball Night Court</h1>
-					<p>Opening ceremony of the Night Volleyball court at University of Peradeniya was commenced successfully on 5th of December 2018 with the presence of Deputy Vice-Chancellor.</p>
-					<a href="#" className="readmore">Read more</a>
-				</article>			
-				<article>
-					<a href="#"><img src="../static/swimmingIUG.jpg" alt=""/></a>
-					<h1>Inter University Games 2018 - Swimming</h1>
-					<p>Inter University Games(IUG) Swimming events were held on 6th of October, 2018 at Rajarata University Swimming Pool.</p>
-					<a href="#" className="readmore">Read more</a>
-				</article>
-				<article>
-	                <a href="#"><img src="../static/WUC Weightlifting 2014 1.jpg" alt=""/></a>
-					<h1>WORLD UNIVERSITY WEIGHTLIFTING CHAMPIONSHIP 2014</h1>
-					<p> The World University Weightlifting Championship was held from 5th to 8th December 2014 in Chiang Mai, Thailand. One of our weightlifters, H.D. Ruwan Sandaruwan of Faculty of Engineering participated for this grand event representing the Sri Lanka National University Weightlifting team.</p>
-					<a href="#" className="readmore">Read more</a>
-				</article>
-				{/* <article id="sponsors">
-                    <h1>Photos of Recent Events</h1>
-					<img src="../static/football.jpg" alt="" /><img src="../static/Cricket.jpg" alt="" /><img src="../static/Athletic.jpg" alt="" />
-					<img src="../static/Karate.jpg" alt="" /><img src="../static/Chess.jpg" alt="" /><img src="../static/Rugby.jpg" alt="" />
-					<img src="../static/Table Tennis.jpg" alt="" />
-				</article> */}
-			</section>
-		</div>
-		<footer>
-			<p>Copyright & copy 2018 Pera Sports Management Platform by UOP. All Rights Reserved.</p>
-		</footer>
+        <div id="secwrapper">
+            <section>
+                {props.news.map((news) => (
+                    <article key={news._id}>
+                        <a href="#"><img src={`../static/${news.imageURL}`} alt="" /></a>
+                        <h1>{news.name}</h1>
+                        <p>{news.description}</p>
+                        <a href="#" className="readmore">Read more</a>
+                    </article>
+                ))}
+            </section>
+        </div>
+        <footer>
+            <p>Copyright & copy 2018 Pera Sports Management Platform by UOP. All Rights Reserved.</p>
+        </footer>
 
         <style jsx>{`
             img{
@@ -152,7 +119,7 @@ export default () => (
                 margin-top: 35px;
             }
             section{
-                width: 1000px;
+                width: 1100px;
                 margin: auto;
             }
             #secwrapper{
@@ -242,7 +209,20 @@ export default () => (
                 display: inline;
                 zoom: 1;
             }
-        `}    
+        `}
         </style>
     </Layout>
 )
+
+Index.getInitialProps = async function () {
+    const res = await fetch('http://localhost:3000/api/news')
+    const data = await res.json()
+
+    console.log(`Show data fetched. Count: ${data.length}`)
+
+    return {
+        news: data
+    }
+}
+
+export default Index
