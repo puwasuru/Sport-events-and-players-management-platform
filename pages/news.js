@@ -36,7 +36,7 @@ const Index = (props) => (
                 display: inline-block;
             }
             header{
-                background-color: black;
+                background-color: white;
                 height: 50px;
                 width: 100%;
                 position: fixed;
@@ -59,7 +59,7 @@ const Index = (props) => (
                 left: 35px;
             }
             #version{
-                color: black;
+                color: white;
                 font-size: 10px;
                 position: relative;
                 top: 12px;
@@ -71,7 +71,7 @@ const Index = (props) => (
                 left: 12.5%;
             }
             nav li a{
-                color: black;
+                color: white;
                 text-decoration: none;
                 font-family: Verdana, Arial, sans-serif;
                 font-size: 13px;
